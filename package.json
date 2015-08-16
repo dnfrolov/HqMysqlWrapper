@@ -1,0 +1,23 @@
+{
+  "name": "hqmysql",
+  "version": "1.0.0",
+  "description": "wrapper for mysql use common among projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Seth Price <seth.price@hotelquickly.com>",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^2.9.34",
+    "mysql2": "^0.15.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:HotelQuickly/HqMysqlWrapper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HotelQuickly/HqMysqlWrapper/issues"
+  },
+  "homepage": "https://github.com/HotelQuickly/HqMysqlWrapper#readme"
+}
