@@ -94,6 +94,7 @@ module.exports = function(params) {
     return Promise.all(verify)
         .then(function(answers){
             debug('complete round robin: ',answers)
+            return mysqlCluster
         })
         .catch(function(err) {
             console.log(err)
