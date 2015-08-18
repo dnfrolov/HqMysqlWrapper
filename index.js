@@ -21,7 +21,7 @@ module.exports = function(params) {
     mysqlCluster.clusterExecute = execute
     mysqlCluster.cachedClusterExecute = cachedExecute
     mysqlCluster.makeKey = makeKey
-    mysqlCluster.stripArray = stripArray
+    mysqlCluster.firstResult = firstResult
     Promise.promisifyAll(mysqlCluster)
 
     for (let i = 0; i < groups.length; i++) {
