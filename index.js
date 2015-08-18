@@ -44,7 +44,7 @@ module.exports = function(params) {
         return out.join(':')
     }
 
-    function stripArray(value) {
+    function firstResult(value) {
         return value[0] || value[0] === 0 ? value[0] : value
     }
 
