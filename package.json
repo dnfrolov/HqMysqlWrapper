@@ -1,6 +1,6 @@
 {
   "name": "hqmysql",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "wrapper for mysql use common among projects",
   "main": "index.js",
   "scripts": {
