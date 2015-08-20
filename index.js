@@ -18,6 +18,7 @@ module.exports = function(params) {
         verify = []
 
     mysqlCluster = mysql.createPoolCluster()
+    mysqlCluster.clearCache = clearCache
     mysqlCluster.clusterExecute = execute
     mysqlCluster.cachedClusterExecute = cachedExecute
     mysqlCluster.makeKey = makeKey
@@ -31,6 +32,10 @@ module.exports = function(params) {
                 debug('connection to',groups[i].host,'established',result)
                 return result
             }))
+    }
+
+    function clearCache() {
+        cache.clear()
     }
 
     function makeKey(parts) {
@@ -49,19 +54,22 @@ module.exports = function(params) {
     }
 
     function cachedExecute(key, query, params, group) {
-        let toReturn = cache.get(key)
-
+        let toReturn = cache.get(key),
+            ttl
+        if ( typeof query === 'object' && query.ttl ) {
+            ttl = query.ttl
+        }
         if (toReturn) {
             return Promise.resolve(toReturn)
         } else {
             return execute(query, params, group)
-                .bind({key: key})
+                .bind({key: key, ttl: ttl})
                 .then(updateCache)
         }
     }
 
     function updateCache(result) {
-        cache.set(this.key,result)
+        this.ttl ? cache.set(this.key,result,this.ttl) : cache.set(this.key,result)
         return result
     }
 

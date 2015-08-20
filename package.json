@@ -1,6 +1,6 @@
 {
   "name": "hqmysql",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "wrapper for mysql use common among projects",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "bluebird": "^2.9.34",
-    "mysql2": "^0.15.8"
+    "mysql2": "^0.15.8",
+    "nscp": "^0.1.3"
   },
   "repository": {
     "type": "git",
