@@ -3,7 +3,7 @@
 var Promise = require('bluebird'),
     mysql   = require('mysql2'),
     Cache = require('nscp'),
-    cache = new Cache({ stdTTL: 3600000, ttlPercent: 70 }),
+    cache = new Cache({ stdTTL: 3600, ttlPercent: 70 }),
     hit = require('debug')('hq:cache:hit'),
     miss = require('debug')('hq:cache:miss'),
     debug = require('debug')('hq:mysql'),
