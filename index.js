@@ -3,7 +3,7 @@
 const mysql = require('mysql2')
 const Promise = require('bluebird')
 const debug = require('debug')('hq:mysql')
-const error = require('error')('hq:mysql:error')
+const error = require('debug')('hq:mysql:error')
 
 module.exports = function (params) {
   const verify = []
@@ -21,7 +21,7 @@ module.exports = function (params) {
         }
 
         connection.config.namedPlaceholders = !Array.isArray(params)
-        connection.query(query, params, (err, rows) => {
+        connection.execute(query, params, (err, rows) => {
           connection.release()
 
           if (err) {
@@ -38,7 +38,10 @@ module.exports = function (params) {
     mysqlCluster.add(groups[i].groupName, groups[i])
 
     verify.push(mysqlCluster.clusterExecute('SELECT 1 + ? AS ANSWER', [i], groups[i].groupName)
-      .then(result => debug('connection to', groups[i].host, 'established', result)))
+      .then(result => {
+        debug('connection to', groups[i].host, 'established', result)
+        return result
+      }))
   }
 
   return Promise.all(verify)
