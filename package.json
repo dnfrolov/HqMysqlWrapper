@@ -1,17 +1,19 @@
 {
   "name": "hqmysql",
-  "version": "1.2.1",
-  "description": "wrapper for mysql use common among projects",
+  "version": "2.0.0",
+  "description": "wrapper for mysql2",
   "main": "index.js",
+  "engines": {
+    "node": "4.2.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Seth Price <seth.price@hotelquickly.com>",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "bluebird": "^2.9.34",
-    "mysql2": "^0.15.8",
-    "nscp": "^0.1.3"
+    "mysql2": "^0.15.8"
   },
   "repository": {
     "type": "git",
